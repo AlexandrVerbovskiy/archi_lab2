@@ -36,5 +36,8 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
 
+    - name: Migration
+      run: dotnet run migration
+
     - name: Build project
       run: dotnet publish --output bin/
