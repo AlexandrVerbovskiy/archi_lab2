@@ -14,21 +14,30 @@ jobs:
     
     steps:
     - name: Check out code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       
     - name: Set up .NET
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '6.0'
+        dotnet-version: '8.0'
       
+    - name: Clear cache
+      run: |
+        rm -rf ~/.nuget/packages
+        dotnet nuget locals all --clear
+
+    - name: Remove old build files
+      run: |
+        rm -rf bin obj
+
+    - name: Clear
+      run: dotnet clean
+
     - name: Restore dependencies
       run: dotnet restore
-      
-    - name: Apply FluentMigrator migrations
-      run: dotnet run --project ./Migrations --migrate
 
-    - name: Apply FluentMigrator seeders
-      run: dotnet run --project ./Seeders --migrate
+    - name: Migration
+      run: dotnet run migrate
 
     - name: Build project
-      run: dotnet build --configuration Release
+      run: dotnet publish --output bin/

@@ -25,10 +25,26 @@ builder.Services.AddSingleton<IDbConnection>(sp =>
 
 var app = builder.Build();
 
-using (var scope = app.Services.CreateScope())
+if (args.Length > 0 && args[0] == "migrate")
 {
-    var runner = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
-    runner.MigrateUp();
+    using (var scope = app.Services.CreateScope())
+    {
+        var runner = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
+        runner.MigrateUp();
+    }
+    Console.WriteLine("Migrations applied successfully!");
+    return; 
+}
+
+if (args.Length > 0 && args[0] == "migrate:rollback")
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var runner = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
+        runner.MigrateDown(0);
+    }
+    Console.WriteLine("Migrations rolled back!");
+    return;
 }
 
 app.UseAuthorization();
