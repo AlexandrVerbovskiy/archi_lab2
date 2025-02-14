@@ -117,8 +117,6 @@ public class UsersController : ControllerBase
             }
         }
 
-        //test
-
         return users;
     }
 }
