@@ -36,8 +36,5 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
 
-    - name: Remove apphost
-      run: rm -rf obj/Release/net8.0/linux-x64/apphost
-
     - name: Build project
       run: dotnet publish --output bin/
