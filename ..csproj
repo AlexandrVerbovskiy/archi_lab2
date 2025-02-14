@@ -6,7 +6,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>true</InvariantGlobalization>
     <RootNamespace>_</RootNamespace>
-    <OutputPath>./bin/</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>

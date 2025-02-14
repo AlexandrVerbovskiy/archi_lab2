@@ -21,6 +21,11 @@ jobs:
       with:
         dotnet-version: '8.0'
       
+    - name: Clear cache
+      run: |
+        rm -rf ~/.nuget/packages
+        dotnet nuget locals all --clear
+
     - name: Clear
       run: dotnet clean
 
