@@ -23,12 +23,6 @@ jobs:
       
     - name: Restore dependencies
       run: dotnet restore
-      
-    - name: Apply FluentMigrator migrations
-      run: dotnet run --project ./Migrations --migrate
-
-    - name: Apply FluentMigrator seeders
-      run: dotnet run --project ./Seeders --migrate
 
     - name: Build project
       run: dotnet build --configuration Release
