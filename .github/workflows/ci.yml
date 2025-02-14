@@ -14,10 +14,10 @@ jobs:
     
     steps:
     - name: Check out code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       
     - name: Set up .NET
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '8.0'
       
@@ -37,4 +37,4 @@ jobs:
       run: dotnet restore
 
     - name: Build project
-      run: dotnet build --configuration Release --output bin/
+      run: dotnet publish --configuration Release --runtime linux-x64 --self-contained false --output bin/
