@@ -22,11 +22,13 @@ jobs:
         dotnet-version: '8.0'
       
     - name: Clear cache
-      run: rm -rf ~/.nuget/packages
+      run: |
+        rm -rf ~/.nuget/packages
         dotnet nuget locals all --clear
 
     - name: Remove old build files
-      run: rm -rf bin obj
+      run: |
+        rm -rf bin obj
 
     - name: Clear
       run: dotnet clean
