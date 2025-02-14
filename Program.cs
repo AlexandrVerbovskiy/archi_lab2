@@ -36,7 +36,7 @@ if (args.Length > 0 && args[0] == "migrate")
     return; 
 }
 
-if (args.Length > 0 && args[0] == "migration:rollback")
+if (args.Length > 0 && args[0] == "migrate:rollback")
 {
     using (var scope = app.Services.CreateScope())
     {

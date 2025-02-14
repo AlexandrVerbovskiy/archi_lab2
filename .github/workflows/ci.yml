@@ -37,7 +37,7 @@ jobs:
       run: dotnet restore
 
     - name: Migration
-      run: dotnet run migration
+      run: dotnet run migrate
 
     - name: Build project
       run: dotnet publish --output bin/
