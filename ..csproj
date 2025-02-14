@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>true</InvariantGlobalization>
     <RootNamespace>_</RootNamespace>
-    <OutputPath>bin/Release/net8.0/</OutputPath>
+    <OutputPath>./bin/</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
