@@ -22,9 +22,11 @@ jobs:
         dotnet-version: '8.0'
       
     - name: Clear cache
-      run: |
-        rm -rf ~/.nuget/packages
+      run: rm -rf ~/.nuget/packages
         dotnet nuget locals all --clear
+
+    - name: Remove old build files
+      run: rm -rf bin obj
 
     - name: Clear
       run: dotnet clean
@@ -33,4 +35,4 @@ jobs:
       run: dotnet restore
 
     - name: Build project
-      run: dotnet publish --configuration Release
+      run: dotnet publish --configuration Release --runtime linux-x64 --self-contained false
